@@ -1,0 +1,8 @@
+
+.item_important {
+  color: red;
+}
+
+.item_done {
+  text-decoration: line-through;
+}
