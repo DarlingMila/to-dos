@@ -24,8 +24,6 @@ function Form ({ addTask }) {
     setIsImportant(false);
   }
 
-
-
   return (
     <section>
       <form onSubmit={submitTask}>

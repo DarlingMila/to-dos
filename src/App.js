@@ -6,63 +6,60 @@ import List from "./components/List/List";
 
 function App() {
 
-  const [list, setList] = useState([
-    {
-      id: 1,
-      name: "покушать суп",
-      price: 150,
-      isImportant: true,
-      isDone: true,
-    },
-    {
-      id: 2,
-      name: "слепить пельмени",
-      price: 50,
-      isImportant: false,
-      isDone: true,
-    },
-    {
-      id: 3,
-      name: "снести стену",
-      price: 500,
-      isImportant: false,
-      isDone: false,
-    },
-    {
-      id: 4,
-      name: "купить пряник",
-      price: 20,
-      isImportant: true,
-      isDone: false,
-    },
-  ]);
-
+  const [list, setList] = useState([]);
   const [points, setPoints] = useState(0);
 
+  // useEffect(() => {
+  //   getFromLocalStorage();
+  // }, []);
+
+  // const getFromLocalStorage = () => {
+  //   const isSaved = localStorage.getItem("savedList") !== null;
+  //   console.log("isSaved", isSaved, typeof isSaved);
+  //   const savedList = isSaved
+  //     ? JSON.parse(localStorage.getItem("savedList"))
+  //     : [];
+  //   console.log("savedList", savedList, typeof savedList);
+  //   setList(savedList);
+  //   console.log("list", list);
+  // }
+  
+  // useEffect(() => {
+  //   setToLocalStorage();
+  // }, [list])
+
+  // const setToLocalStorage = () => {
+  //   console.log("лист обновлен");
+  //   console.log("ЗАПИСЫВАЕМ", list);
+
+  //   localStorage.setItem("savedList", JSON.stringify(list));
+  // }
 
   const addTask = (task) => {
     console.log("task", task);
-    setList([...list, task])
-
-    // console.log("--- list", list);
+    setList([...list, task]);
   };
-
-  useEffect(() => {
-    console.log("--- list", list);
-  }, [list])
-
-  useEffect(() => {
-    console.log("--- points", points);
-  }, [points]);
 
   const deleteTask = (id) => {
     console.log(id)
     setList(list.filter((item) => item.id !== id));
   }
 
-  const doneTask = (id, price) => {
-    console.log(id, price)
-    setPoints(points + price)
+  const doneTask = (id, price, isDone) => {
+    console.log(id, price, isDone);
+
+    if (isDone) {
+      setPoints(points - price);
+    } else {
+      setPoints(points + price);
+    }
+
+    setList(list.map((item) => {
+      if (item.id === id) {
+        return {...item, isDone: !item.isDone}
+      }
+      return item;
+    }));
   }
 
 
