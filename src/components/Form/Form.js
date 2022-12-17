@@ -12,7 +12,7 @@ function Form ({ addTask }) {
     const task = {
       id: Date.now(),
       name, 
-      price, 
+      price: Number(price), 
       isImportant,
       isDone: false,
     }
