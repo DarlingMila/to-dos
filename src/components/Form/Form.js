@@ -11,7 +11,7 @@ function Form ({ addTask }) {
     
     const task = {
       id: Date.now(),
-      name, 
+      name: name.trim(), 
       price: Number(price), 
       isImportant,
       isDone: false,

@@ -18,19 +18,27 @@ function App() {
 
   const [list, setList] = useState(getFromLocalStorage("savedList", []));
   const [goal, setGoal] = useState(getFromLocalStorage("savedGoal", {}));
-  const [points, setPoints] = useState(getFromLocalStorage("savedPoints", 0));
+  const [earnedPoints, setEarnedPoints] = useState(
+    getFromLocalStorage("earnedPoints", 0)
+  );
+
+  const [isAchieved, setIsAchieved] = useState(
+    getFromLocalStorage("isAchieved", false)
+  );
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
 
 
   useEffect(() => {
+    console.group();
     console.log("list", list);
     console.log("goal", goal);
-    console.log("points", points);
+    console.log("earnedPoints", earnedPoints);
+    console.log("isAchieved", isAchieved);
+    console.groupEnd();
     
     if (goal.name === undefined) {
-      console.log("задачи нет");
-      setIsOpenPopup(true)
+      setIsOpenPopup(true);
     } 
     
   }, []);
@@ -38,12 +46,14 @@ function App() {
   useEffect(() => {
     setToLocalStorage("savedList", list);
     setToLocalStorage("savedGoal", goal);
-    setToLocalStorage("savedPoints", points);
-  }, [list, goal, points])
+    setToLocalStorage("earnedPoints", earnedPoints);
+    setToLocalStorage("isAchieved", isAchieved);
+  }, [list, goal])
 
   const setToLocalStorage = (key, set) => {
     localStorage.setItem(key, JSON.stringify(set));
   }
+
 
   const addTask = (task) => {
     console.log("task", task);
@@ -51,19 +61,20 @@ function App() {
   };
 
   const deleteTask = (id) => {
-    console.log(id)
+    //console.log(id)
     setList(list.filter((item) => item.id !== id));
   }
 
   const doneTask = (id, price, isDone) => {
-    console.log(id, price, isDone);
-
-    console.log("price", price, typeof price)
+    //console.log(id, price, isDone);
+    //console.log("price", price, typeof price)
 
     if (isDone) {
-      setPoints(points - price);
+      setEarnedPoints(earnedPoints - price);
+      console.log("earnedPoints - price = ", earnedPoints - price);
     } else {
-      setPoints(points + price);
+      setEarnedPoints(earnedPoints + price);
+      console.log("earnedPoints + price = ", earnedPoints + price);
     }
 
     setList(list.map((item) => {
@@ -74,11 +85,26 @@ function App() {
     }));
   }
 
+  useEffect(() => {
+
+    if (earnedPoints >= goal.price) {
+      setIsAchieved(true);
+    } else {
+      setIsAchieved(false);
+    }
+    
+  },[earnedPoints, goal])
+
 
   const addGoal = (goal) => {
-    console.log('goal', goal);
+    //console.log('goal', goal);
     setGoal(goal);
     setIsOpenPopup(false);
+
+    if (goal.fromScratch === true) {
+      setEarnedPoints(0);
+    }
+
   }
 
   const closePopup = () => {
@@ -92,11 +118,17 @@ function App() {
 
   return (
     <div className="App">
-      <Goal goal={goal} points={points} openPopup={openPopup} />
+      <Goal
+        goal={goal}
+        earnedPoints={earnedPoints}
+        openPopup={openPopup}
+        isAchieved={isAchieved}
+      />
       <Form addTask={addTask} />
       <List list={list} deleteTask={deleteTask} doneTask={doneTask} />
 
       <GoalPopup
+        goal={goal}
         addGoal={addGoal}
         isOpenPopup={isOpenPopup}
         closePopup={closePopup}

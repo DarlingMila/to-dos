@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./GoalPopup.css";
 
-function GoalPopup({ addGoal, isOpenPopup, closePopup }) {
+function GoalPopup({ goal, addGoal, isOpenPopup, closePopup }) {
   const [goalName, setGoalName] = useState("");
   const [goalPrice, setGoalPrice] = useState("");
   const [fromScratch, setFromScratch] = useState(true);
@@ -10,7 +10,7 @@ function GoalPopup({ addGoal, isOpenPopup, closePopup }) {
     e.preventDefault();
 
     const goal = {
-      name: goalName,
+      name: goalName.trim(),
       price: Number(goalPrice),
       fromScratch,
     };
@@ -27,7 +27,7 @@ function GoalPopup({ addGoal, isOpenPopup, closePopup }) {
 
   const resetData = () => {
     setGoalName("");
-    setGoalPrice(0);
+    setGoalPrice("");
     setFromScratch(true);
   }
 
@@ -40,7 +40,7 @@ function GoalPopup({ addGoal, isOpenPopup, closePopup }) {
       <div className="popup">
         <div>
           <h3>Обозначьте цель</h3>
-          <button type="button" onClick={close}>
+          <button type="button" onClick={close} disabled={!goal.name && true}>
             &times;
           </button>
         </div>

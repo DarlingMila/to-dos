@@ -1,0 +1,7 @@
+.goal_achieved h1 {
+  color: green;
+}
+
+.goal_achieved button {
+  background-color: green;
+}

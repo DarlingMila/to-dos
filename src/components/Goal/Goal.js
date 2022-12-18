@@ -1,17 +1,19 @@
 import React from 'react'
+import "./Goal.css";
 
-function Goal({ goal, points, openPopup }) {
-
+function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
   const open = () => {
     openPopup();
-  }
+  };
 
   return (
-    <section>
+    <section className={`goal ${isAchieved ? "goal_achieved" : ""}`}>
       <h1>{goal.name}</h1>
-      <button type="button" onClick={open}>Поменять цель</button>
+      <button type="button" onClick={open}>
+        Поменять цель
+      </button>
       <div>
-        {points} / {goal.price}
+        {earnedPoints} / {goal.price}
       </div>
     </section>
   );
