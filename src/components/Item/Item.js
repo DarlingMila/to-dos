@@ -21,11 +21,17 @@ function Item ({ id, name, price, isImportant, isDone, deleteTask, doneTask }) {
     >
       <h3>{name}</h3>
       <p>{price}</p>
-      <button type="button" onClick={() => doneHandler(id, price, isDone)}>
-        Сделано
+      <button
+        type="button"
+        className="itemBtn itemBtn_done"
+        onClick={() => doneHandler(id, price, isDone)}
+      >
       </button>
-      <button type="button" onClick={() => deleteHandler(id)}>
-        Удалить
+      <button
+        type="button"
+        className="itemBtn itemBtn_delete"
+        onClick={() => deleteHandler(id)}
+      >
       </button>
     </li>
   );

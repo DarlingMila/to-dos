@@ -1,8 +1,120 @@
+.item {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px 10px 10px 50px;
+  border-radius: 20px;
+
+  position: relative;
+  border: 2px solid white;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
+
+.item h3 {
+  margin: 0;
+}
+
+.item p {
+  margin: 0;
+}
+
+.itemBtn {
+  cursor: pointer;
+}
+
+.itemBtn_done {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid white;
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+  transform-origin: center;
+  font-size: 25px;
+  transition: all 0.2s ease-in-out;
+  
+}
+
+/* крестик -  \2716*/
+/* галочка -  \2714*/
+/* точка -  \2022*/
+/* жирная точка - \25CF */
+
+.itemBtn_done::after {
+  /* точка */
+  content: '\25CF';
+  opacity: 0.8;
+}
+.itemBtn_done:hover {
+  background-color: rgb(75, 145, 75);
+  color: white;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.itemBtn_done:hover::after {
+  /* галочка */
+  content: '\2714';
+  opacity: 1;
+}
+.item_done .itemBtn_done {
+  background-color: rgb(75, 145, 75);
+  color: white;
+}
+.item_done .itemBtn_done::after {
+  /* галочка */
+  content: '\2714';
+}
+.item_done .itemBtn_done:hover::after {
+  /* точка */
+  content: '\25CF';
+  opacity: 1;
+}
+.item_done .itemBtn_done:hover {
+  background-color: white;
+  color: black;
+}
+
+
+
+.itemBtn_delete {
+  width: 25px;
+  height: 25px;
+
+  
+  
+  background-image: url("../../images/trashcan_delete_remove_trash_icon_178327.svg");
+  background-size:contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+
+
+
+  
+}
+
+
+
+
+
+
+
 
 .item_important {
   color: red;
 }
 
 .item_done {
+  background-color: rgba(211, 211, 211, 0.6);
+}
+
+.item_done h3 {
   text-decoration: line-through;
+  color:rgb(134, 134, 134);
 }

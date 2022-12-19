@@ -1,13 +1,17 @@
-/* .App {
-  position: fixed;
+.App {
+  /* position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
 
-  background-image: url("./images/background.jpg");
+  min-height: 100vh;
+
+  background-image: url("./images/jan-baborak-n9dTKxMjheE-unsplash.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom left;
-  background-color: rgb(235,235,235);
-} */
+  background-attachment: fixed;
+ 
+
+  
+
+}

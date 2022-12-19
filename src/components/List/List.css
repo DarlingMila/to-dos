@@ -1,0 +1,12 @@
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+
+  /* border: 1px solid red; */
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

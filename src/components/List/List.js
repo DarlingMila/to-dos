@@ -1,10 +1,12 @@
 import React from "react";
 import Item from "./../Item/Item";
 
+import "./List.css";
+
 function List({ list, deleteTask, doneTask }) {
   return (
-    <section>
-      <ul>
+    <section className="section">
+      <ul className="list">
         {list.map((task) => {
           return (
             <Item
