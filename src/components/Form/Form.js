@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Form.css";
 
 function Form ({ addTask }) {
 
@@ -25,37 +26,47 @@ function Form ({ addTask }) {
   }
 
   return (
-    <section>
+    <section className="formSection">
       <form onSubmit={submitTask}>
-        <input
-          type="text"
-          name="task"
-          id="task"
-          placeholder="Задача..."
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          required
-        />
-        <input
-          type="number"
-          name="cost"
-          id="cost"
-          placeholder="Стоимость..."
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-          required
-        />
-        <input
-          type="checkbox"
-          name="importance"
-          id="importance"
-          checked={isImportant}
-          onChange={(e) => {
-            setIsImportant(!isImportant);
-          }}
-        />
+        <div className="form_inputWrapper">
+          <input
+            type="text"
+            name="task"
+            id="task"
+            placeholder="Задача..."
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            autoComplete="off"
+            required
+          />
+
+          <input
+            type="number"
+            name="cost"
+            id="cost"
+            placeholder="Баллы за выполнение..."
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+            autoComplete="off"
+            required
+          />
+        </div>
+
+        <div className="form_checkboxWrapper">
+          <label htmlFor="importance">Отметить как важную</label>
+          <input
+            type="checkbox"
+            name="importance"
+            id="importance"
+            checked={isImportant}
+            onChange={(e) => {
+              setIsImportant(!isImportant);
+            }}
+          />
+        </div>
+
         <button type="submit">Добавить</button>
       </form>
     </section>

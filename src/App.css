@@ -1,17 +1,33 @@
-.App {
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
-
+.app {
   min-height: 100vh;
 
   background-image: url("./images/jan-baborak-n9dTKxMjheE-unsplash.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
- 
+  background-position:center;
+  background-size: cover;
+  background-clip: border-box;
 
-  
+  padding: 0;
+  margin: 0;
+
+  /* цвета */
+  --dark-blue-color: rgba(9, 93, 121, 1);
+  --see-through-dark-blue-color: rgba(9, 93, 121, 0.5);
+  /* --light-blue-color: rgba(14, 145, 184, 1); */
+  --light-grey-color: rgb(224, 234, 238, 1);
+  --white-color: rgba(255, 255, 255, 1);
+
+  --see-through-white-color: rgba(255, 255, 255, 0.5);
+  --see-through-light-grey-color: rgba(224, 234, 238, 0.5);
+
+  --black-color: rgba(0, 0, 0, 1);
+  --see-through-black-color: rgba(0, 0, 0, 0.2);
 
 }
+
+.app_wrapper {
+  padding-top: 150px;
+}
+
+

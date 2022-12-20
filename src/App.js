@@ -56,7 +56,7 @@ function App() {
 
 
   const addTask = (task) => {
-    console.log("task", task);
+    //console.log("task", task);
     setList([...list, task]);
   };
 
@@ -71,10 +71,10 @@ function App() {
 
     if (isDone) {
       setEarnedPoints(earnedPoints - price);
-      console.log("earnedPoints - price = ", earnedPoints - price);
+      //console.log("earnedPoints - price = ", earnedPoints - price);
     } else {
       setEarnedPoints(earnedPoints + price);
-      console.log("earnedPoints + price = ", earnedPoints + price);
+      //console.log("earnedPoints + price = ", earnedPoints + price);
     }
 
     setList(list.map((item) => {
@@ -117,15 +117,17 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="app">
       <Goal
         goal={goal}
         earnedPoints={earnedPoints}
         openPopup={openPopup}
         isAchieved={isAchieved}
       />
-      <Form addTask={addTask} />
-      <List list={list} deleteTask={deleteTask} doneTask={doneTask} />
+      <div className="app_wrapper">
+        <Form addTask={addTask} />
+        <List list={list} deleteTask={deleteTask} doneTask={doneTask} />
+      </div>
 
       <GoalPopup
         goal={goal}

@@ -6,15 +6,46 @@ function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
     openPopup();
   };
 
+  const setWidth = () => {
+    if (earnedPoints >= goal.price) {
+      return "100%";
+    }
+    const width = (earnedPoints * 100) / goal.price;
+    return `${width}%`;
+  }
+
+  const madeProgress = {
+    width: setWidth(),
+  };
+
   return (
     <section className={`goal ${isAchieved ? "goal_achieved" : ""}`}>
-      <h1>{goal.name}</h1>
-      <button type="button" onClick={open}>
-        Поменять цель
-      </button>
-      <div>
+      <div className="wrapper">
+        <h1>{goal.name}</h1>
+        <button type="button" onClick={open}>
+          Поменять цель
+        </button>
+      </div>
+      <div className="goal_progressBar">
+        <div className="line">{goal.price}</div>
+        <div className="line line_green" style={madeProgress}>
+          <div className="dot">{earnedPoints}</div>
+        </div>
+      </div>
+      {/* <div
+        className="goal_progressBar"
+        data-earnedPoints={earnedPoints}
+        data-goalPrice={goal.price}
+      >
         {earnedPoints} / {goal.price}
       </div>
+      <div
+        className="goal_progressBar"
+        data-earnedPoints={earnedPoints}
+        data-goalPrice={goal.price}
+      >
+        {earnedPoints} / {goal.price}
+      </div> */}
     </section>
   );
 }

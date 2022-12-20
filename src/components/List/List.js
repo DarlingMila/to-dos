@@ -5,8 +5,8 @@ import "./List.css";
 
 function List({ list, deleteTask, doneTask }) {
   return (
-    <section className="section">
-      <ul className="list">
+    <section className="list">
+      <ul>
         {list.map((task) => {
           return (
             <Item

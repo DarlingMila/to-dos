@@ -1,13 +1,14 @@
 .item {
-  background-color: rgba(255, 255, 255, 0.7);
-  width: 80%;
+  background-color: var(--see-through-white-color);
+  width: 200px;
   margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 20px 10px 10px 50px;
-  border-radius: 20px;
+  padding: 10px 10px 10px 40px;
+  border-radius: 10px;
 
   position: relative;
-  border: 2px solid white;
+  border: 2px solid var(--white-color);
+  justify-self: end;
+  align-self: flex-end;
 }
 
 .item:last-child {
@@ -16,10 +17,21 @@
 
 .item h3 {
   margin: 0;
+  color: var(--dark-blue-color);
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .item p {
   margin: 0;
+  color: var(--dark-blue-color);
+  font-size: 15px;
+}
+
+.item p::before {
+  
+  content: "\2014";
+  padding-right: 5px;
 }
 
 .itemBtn {
@@ -30,11 +42,11 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: white;
-  border: 3px solid white;
+  background-color: var(--white-color);
+  border: 3px solid var(--white-color);
   position: absolute;
   top: 50%;
-  left: -20px;
+  left: -25px;
   transform: translateY(-50%);
   transform-origin: center;
   font-size: 25px;
@@ -46,38 +58,42 @@
 /* галочка -  \2714*/
 /* точка -  \2022*/
 /* жирная точка - \25CF */
+/* длинное тире - \2014 */
 
 .itemBtn_done::after {
   /* точка */
   content: '\25CF';
-  opacity: 0.8;
+  color: var(--dark-blue-color);
 }
 .itemBtn_done:hover {
-  background-color: rgb(75, 145, 75);
-  color: white;
-  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.5);
+  background-color: var(--dark-blue-color);
+  color: var(--white-color);
+  box-shadow: 0 0 0 10px var(--see-through-light-grey-color);
 }
 .itemBtn_done:hover::after {
   /* галочка */
   content: '\2714';
   opacity: 1;
+  color: var(--white-color);
 }
 .item_done .itemBtn_done {
-  background-color: rgb(75, 145, 75);
-  color: white;
+  background-color: var(--dark-blue-color);
+  color: var(--white-color);
 }
 .item_done .itemBtn_done::after {
   /* галочка */
   content: '\2714';
+  color: var(--white-color);
 }
 .item_done .itemBtn_done:hover::after {
   /* точка */
   content: '\25CF';
   opacity: 1;
+  color: var(--dark-blue-color);
 }
 .item_done .itemBtn_done:hover {
-  background-color: white;
-  color: black;
+  background-color: var(--white-color);
+  color: var(--dark-blue-color);
 }
 
 
@@ -86,17 +102,23 @@
   width: 25px;
   height: 25px;
 
-  
-  
   background-image: url("../../images/trashcan_delete_remove_trash_icon_178327.svg");
   background-size:contain;
   background-repeat: no-repeat;
   border: none;
   background-color: transparent;
 
+  opacity: 0.5;
 
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 
-  
+  transition: all 0.2s ease-in;
+}
+
+.itemBtn_delete:hover {
+  opacity: 0.8;
 }
 
 
@@ -107,14 +129,25 @@
 
 
 .item_important {
-  color: red;
+  background-color: var(--see-through-dark-blue-color);
 }
+
+.item_important h3,
+.item_important p {
+  color: var(--white-color);
+}
+
+.item_important h3::before {
+  content: "\2605";
+  padding-right: 5px;
+}
+
 
 .item_done {
-  background-color: rgba(211, 211, 211, 0.6);
+  background-color: var(--see-through-light-grey-color);
 }
 
-.item_done h3 {
-  text-decoration: line-through;
-  color:rgb(134, 134, 134);
+.item_done h3,
+.item_done p  {
+  color: var(--see-through-black-color);
 }
