@@ -13,9 +13,6 @@
   padding: 0;
 
   display: grid;
-  row-gap: 20px;
+  gap: 20px 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-
-
 }

@@ -67,7 +67,7 @@ function Form ({ addTask }) {
           />
         </div>
 
-        <button type="submit">Добавить</button>
+        <button className="form__submitBtn" type="submit"></button>
       </form>
     </section>
   );

@@ -28,6 +28,8 @@ function App() {
 
   const [isOpenPopup, setIsOpenPopup] = useState(false);
 
+  const [oldPoints, setOldPoints] = useState(0);
+
 
   useEffect(() => {
     console.group();
@@ -39,50 +41,7 @@ function App() {
     
     if (goal.name === undefined) {
       setIsOpenPopup(true);
-    } 
-
-    // setList([
-    //   {id: 1, name: "why", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 2, name: "people", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 3, name: "stay", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 4, name: "home", price: Number(1500), isImportant: true, isDone: false},
-    //   {id: 5, name: "when", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 6, name: "they", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 7, name: "wanna", price: Number(1500), isImportant: true, isDone: false},
-    //   {id: 8, name: "party", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 9, name: "really", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 10, name: "hardy", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 11, name: "why", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 12, name: "people", price: Number(1500), isImportant: true, isDone: false},
-    //   {id: 13, name: "stay", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 14, name: "home", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 15, name: "when", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 16, name: "they", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 17, name: "wanna", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 18, name: "party", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 19, name: "really", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 20, name: "hard", price: Number(1500), isImportant: true, isDone: false},
-    //   {id: 21, name: "why", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 22, name: "people", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 23, name: "stay", price: Number(1500), isImportant: true, isDone: false},
-    //   {id: 24, name: "home", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 25, name: "when", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 26, name: "they", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 27, name: "wanna", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 28, name: "party", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 29, name: "really", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 30, name: "hard", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 31, name: "why", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 32, name: "people", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 33, name: "stay", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 34, name: "home", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 35, name: "when", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 36, name: "they", price: Number(1500), isImportant: false, isDone: true},
-    //   {id: 37, name: "wanna", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 38, name: "party", price: Number(1500), isImportant: false, isDone: false},
-    //   {id: 39, name: "really", price: Number(1500), isImportant: true, isDone: true},
-    //   {id: 40, name: "hard", price: Number(1500), isImportant: false, isDone: false},
-    // ]);
+    }
     
   }, []);
 
@@ -91,6 +50,8 @@ function App() {
     setToLocalStorage("savedGoal", goal);
     setToLocalStorage("earnedPoints", earnedPoints);
     setToLocalStorage("isAchieved", isAchieved);
+
+    setOldPoints(goal.price);
   }, [list, goal])
 
   const setToLocalStorage = (key, set) => {
@@ -141,11 +102,18 @@ function App() {
 
   const addGoal = (goal) => {
     //console.log('goal', goal);
+
     setGoal(goal);
     setIsOpenPopup(false);
 
     if (goal.fromScratch === true) {
       setEarnedPoints(0);
+    } else {
+      console.log("earnedPoints", earnedPoints);
+      console.log("oldPoints", oldPoints);
+      console.log("earnedPoints-oldPoints = ", earnedPoints - oldPoints);
+
+      setEarnedPoints(earnedPoints-oldPoints);
     }
 
   }

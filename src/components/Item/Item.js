@@ -11,7 +11,8 @@ function Item ({ id, name, price, isImportant, isDone, deleteTask, doneTask }) {
     setTimeout(() => {
       deleteTask(id);
     }, 1000)
-    setDeleteAnimation(true);
+    
+    setDeleteAnimation(!deleteAnimation);
   };
 
   const doneHandler = (id, price, isDone) => {
@@ -26,16 +27,19 @@ function Item ({ id, name, price, isImportant, isDone, deleteTask, doneTask }) {
         ${deleteAnimation ? "item_deleteAnimation" : ""}
         `}
     >
-      <h3>{name}</h3>
-      <p>{price}</p>
+      <div className="item__wrapper">
+        <h3 className="item__title">{name}</h3>
+        <b className="item__price">{price}</b>
+      </div>
+
       <button
         type="button"
-        className="itemBtn itemBtn_done"
+        className="item__btn item__btn_done"
         onClick={() => doneHandler(id, price, isDone)}
       ></button>
       <button
         type="button"
-        className="itemBtn itemBtn_delete"
+        className="item__btn item__btn_delete"
         onClick={() => deleteHandler(id)}
       ></button>
     </li>

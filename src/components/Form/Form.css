@@ -1,15 +1,16 @@
 .formSection{
-  width: 100%;
-  margin: 0 auto;
-  background-color: var(--white-color);
-
-  padding: 10px 20px;
-  box-sizing: border-box;
   position: relative;
-}
 
-.formSection form {
+  width: calc(100% - 2 * var(--side-margin));
+  margin: 0 auto;
+  padding: 10px 20px;
 
+  box-sizing: border-box;
+  border: 1px solid var(--on-primary-color);
+  border-radius: 5px;
+
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
 }
 
 .form_inputWrapper {
@@ -19,73 +20,92 @@
 .form_inputWrapper input {
   width: 250px;
   height: 20px;
-  padding: 5px;
-  border: none;
-  border-bottom: 2px solid var(--see-through-dark-blue-color);
-  color: var(--dark-blue-color);
-  background-color: transparent;
   margin-right: 20px;
+  padding: 5px;
+
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+
+  background-color: transparent;
+
   font-size: 18px;
-  transition: all 0.2s ease-in;
   font-weight: bold;
+  color: inherit;
+
+  transition: all 0.2s ease-in;
 }
 
 .form_inputWrapper input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--dark-blue-color);
+  font-weight: normal;
+  color: inherit;
   opacity: 0.7; /* Firefox */
 }
 
 .form_inputWrapper input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: var(--dark-blue-color);
+  font-weight: normal;
+  color: inherit;
   opacity: 0.7;
 }
 
 .form_inputWrapper input::-ms-input-placeholder { /* Microsoft Edge */
-  color: var(--dark-blue-color);
+  font-weight: normal;
+  color: inherit;
   opacity: 0.7;
 }
 
 .form_inputWrapper input:focus {
   outline: none;
-  border-bottom-color: var(--dark-blue-color);
+  border-bottom-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .form_checkboxWrapper label {
+  padding-left: 5px;
   font-size: 18px;
   font-weight: bold;
   line-height: 18px;
-  color: var(--dark-blue-color);
-  padding-left: 5px;
+  color: inherit;
 }
 
 .form_checkboxWrapper input {
  vertical-align: text-bottom;
 }
 
-.formSection form button {
+.form__submitBtn {
  position: absolute;
  top: 50%;
  right: 20px;
- transform: translateY(-50%);
- transform-origin: center;
 
+ width: 40px;
+ height: 40px;
+
+ margin: 0;
+ padding: 0;
+ 
+ background-color: var(--primary-color);
+ border: 1px solid var(--on-primary-color);
  border-radius: 5px;
- line-height: 15px;
- font-size: 14px;
- font-weight: bold;
 
- padding: 10px;
- color: var(--white-color);
- background-color: var(--dark-blue-color);
- border: 2px solid var(--dark-blue-color);
-
+ transform: translateY(-50%);
+ 
+ font-size: 35px;
+ line-height: 35px;
+ text-align: center;
+ color: var(--on-primary-color);
+ 
  cursor: pointer;
  transition: all 0.2s ease-in;
+ transform-origin: center;
 }
 
-.formSection form button:hover  {
-  background-color: var(--light-grey-color);
-  color: var(--dark-blue-color);
-  border: 2px solid var(--dark-blue-color);
+.form__submitBtn::after {
+  content: "\002B";
+}
+
+.form__submitBtn:hover  {
   animation: none;
+
+  border-color: var(--accent-color);
+  background-color: var(--on-accent-color);
+  color: var(--accent-color);
 }

@@ -20,32 +20,18 @@ function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
 
   return (
     <section className={`goal ${isAchieved ? "goal_achieved" : ""}`}>
-      <div className="wrapper">
-        <h1>{goal.name}</h1>
-        <button type="button" onClick={open}>
+      <div className="goal__wrapper">
+        <h1 className="goal__title">{goal.name}</h1>
+        <button className="goal__btn" type="button" onClick={open}>
           Поменять цель
         </button>
       </div>
       <div className="goal_progressBar">
         <div className="line">{goal.price}</div>
-        <div className="line line_green" style={madeProgress}>
-         {earnedPoints}
+        <div className="line line_progress" style={madeProgress}>
+          {earnedPoints}
         </div>
       </div>
-      {/* <div
-        className="goal_progressBar"
-        data-earnedPoints={earnedPoints}
-        data-goalPrice={goal.price}
-      >
-        {earnedPoints} / {goal.price}
-      </div>
-      <div
-        className="goal_progressBar"
-        data-earnedPoints={earnedPoints}
-        data-goalPrice={goal.price}
-      >
-        {earnedPoints} / {goal.price}
-      </div> */}
     </section>
   );
 }
