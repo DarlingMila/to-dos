@@ -29,7 +29,7 @@ function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
       <div className="goal_progressBar">
         <div className="line">{goal.price}</div>
         <div className="line line_green" style={madeProgress}>
-          <div className="dot">{earnedPoints}</div>
+         {earnedPoints}
         </div>
       </div>
       {/* <div

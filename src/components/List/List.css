@@ -1,18 +1,21 @@
 .list {
-  width: 900px;
   margin: 0 auto;
   margin-top: 30px;
+  display: block;
 
   /* border: 1px solid red; */
 }
 
 .list ul {
+  width: calc(100% - 2 * var(--side-margin));
   list-style: none;
   margin: 0 auto;
   padding: 0;
 
   display: grid;
   row-gap: 20px;
-  grid-template-columns: repeat(auto-fit, 300px);
-  justify-content: space-around;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+
+
 }

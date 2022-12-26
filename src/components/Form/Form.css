@@ -1,8 +1,8 @@
 .formSection{
-  width: 900px;
+  width: 100%;
   margin: 0 auto;
-  background-color: var(--see-through-white-color);
-  border-radius: 10px;
+  background-color: var(--white-color);
+
   padding: 10px 20px;
   box-sizing: border-box;
   position: relative;
