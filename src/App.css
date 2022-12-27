@@ -26,8 +26,18 @@
   --on-accent-color: hsl(240, 3%, 14%);;
 }
 
-.app_wrapper {
+.app__body {
   padding-top: 130px;
+}
+
+.app__wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 20px;
+  width: calc(100% - 2 * var(--side-margin));
+
+  margin: 0 auto;
+  padding: 0;
 }
 
 

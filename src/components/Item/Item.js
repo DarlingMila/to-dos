@@ -1,18 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import "./Item.css";
 
-function Item ({ id, name, price, isImportant, isDone, deleteTask, doneTask }) {
-
-  const [deleteAnimation, setDeleteAnimation] = useState(false);
+function Item ({ id, name, price, isImportant, isDone, toBeDeleted, deleteTask, doneTask }) {
   
   const deleteHandler = (id) => {
-    console.log("item id", id);
-    
-    setTimeout(() => {
-      deleteTask(id);
-    }, 1000)
-    
-    setDeleteAnimation(!deleteAnimation);
+    //console.log("item id", id);
+    deleteTask(id);
   };
 
   const doneHandler = (id, price, isDone) => {
@@ -24,7 +17,7 @@ function Item ({ id, name, price, isImportant, isDone, deleteTask, doneTask }) {
       className={`item
         ${isImportant ? "item_important" : ""} 
         ${isDone ? "item_done" : ""}
-        ${deleteAnimation ? "item_deleteAnimation" : ""}
+        ${toBeDeleted ? "item_deleteAnimation" : ""}
         `}
     >
       <div className="item__wrapper">

@@ -16,6 +16,7 @@ function Form ({ addTask }) {
       price: Number(price), 
       isImportant,
       isDone: false,
+      toBeDeleted: false,
     }
     addTask(task);
 

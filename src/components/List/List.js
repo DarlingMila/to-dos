@@ -3,11 +3,11 @@ import Item from "./../Item/Item";
 
 import "./List.css";
 
-function List({ list, deleteTask, doneTask }) {
+function List({ sortedList, deleteTask, doneTask }) {
   return (
     <section className="list">
       <ul>
-        {list.map((task) => {
+        {sortedList.map((task) => {
           return (
             <Item
               key={task.id}
@@ -16,6 +16,7 @@ function List({ list, deleteTask, doneTask }) {
               price={task.price}
               isImportant={task.isImportant}
               isDone={task.isDone}
+              toBeDeleted={task.toBeDeleted}
               deleteTask={deleteTask}
               doneTask={doneTask}
             />

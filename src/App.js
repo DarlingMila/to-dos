@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
+import Sorting from "./components/Sorting/Sorting";
 import Goal from "./components/Goal/Goal";
 import GoalPopup from "./components/GoalPopup/GoalPopup";
 
@@ -17,6 +18,7 @@ function App() {
   };
 
   const [list, setList] = useState(getFromLocalStorage("savedList", []));
+  const [sortedList, setSortedList] = useState(getFromLocalStorage("savedList", []));
   const [goal, setGoal] = useState(getFromLocalStorage("savedGoal", {}));
   const [earnedPoints, setEarnedPoints] = useState(
     getFromLocalStorage("earnedPoints", 0)
@@ -30,6 +32,9 @@ function App() {
 
   const [oldPoints, setOldPoints] = useState(0);
 
+  const [isDoneFlag, setIsDoneFlag] = useState();
+  const [isImportantFlag, setIsImportantFlag] = useState();
+
 
   useEffect(() => {
     console.group();
@@ -38,6 +43,11 @@ function App() {
     console.log("earnedPoints", earnedPoints);
     console.log("isAchieved", isAchieved);
     console.groupEnd();
+
+    setIsDoneFlag("isDone-all");
+    setIsImportantFlag("isImportant-all");
+
+    setSortedList(list);
     
     if (goal.name === undefined) {
       setIsOpenPopup(true);
@@ -47,12 +57,45 @@ function App() {
 
   useEffect(() => {
     setToLocalStorage("savedList", list);
-    setToLocalStorage("savedGoal", goal);
     setToLocalStorage("earnedPoints", earnedPoints);
     setToLocalStorage("isAchieved", isAchieved);
 
+    setSortedList(list.filter((item) => sorting(item)));
+  }, [list])
+
+  useEffect(() => {
+    setToLocalStorage("savedGoal", goal);
+
     setOldPoints(goal.price);
-  }, [list, goal])
+  }, [goal]);
+
+  useEffect(() => {
+    console.log("isDoneFlag", isDoneFlag);
+    //console.log("isImportantFlag", isImportantFlag);
+
+    setSortedList(list.filter((item) => sorting(item)));
+  }, [isDoneFlag, isImportantFlag]);
+
+  const sorting = (item) => {
+  
+    const option1 =
+    isDoneFlag === String(item.isDone) || 
+    isDoneFlag === "isDone-all";
+
+    const option2 =
+    isImportantFlag === String(item.isImportant) ||
+    isImportantFlag === "isImportant-all";
+
+    if (option1 && option2) return true;
+
+    return false;
+    
+  }
+
+
+
+
+
 
   const setToLocalStorage = (key, set) => {
     localStorage.setItem(key, JSON.stringify(set));
@@ -66,6 +109,24 @@ function App() {
 
   const deleteTask = (id) => {
     //console.log(id)
+    //setList(list.filter((item) => item.id !== id));
+
+    setList(
+      list.map((item) => {
+        if (item.id === id) {
+          return { ...item, toBeDeleted: !item.toBeDeleted };
+        }
+        return item;
+      })
+    );
+
+    setTimeout(() => {
+      removeFromList(id);
+    }, 900)
+
+  }
+
+  const removeFromList = (id) => {
     setList(list.filter((item) => item.id !== id));
   }
 
@@ -135,9 +196,22 @@ function App() {
         openPopup={openPopup}
         isAchieved={isAchieved}
       />
-      <div className="app_wrapper">
-        <Form addTask={addTask} />
-        <List list={list} deleteTask={deleteTask} doneTask={doneTask} />
+      <div className="app__body">
+        <div className="app__wrapper">
+          <Form addTask={addTask} />
+          <Sorting
+            isDoneFlag={isDoneFlag}
+            setIsDoneFlag={setIsDoneFlag}
+            isImportantFlag={isImportantFlag}
+            setIsImportantFlag={setIsImportantFlag}
+          />
+        </div>
+
+        <List
+          sortedList={sortedList}
+          deleteTask={deleteTask}
+          doneTask={doneTask}
+        />
       </div>
 
       <GoalPopup

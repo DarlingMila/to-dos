@@ -1,0 +1,18 @@
+.sortingSection {
+  /* position: relative; */
+
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+
+  box-sizing: border-box;
+  border: 1px solid var(--on-primary-color);
+  border-radius: 5px;
+
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+}
+
+.sortingSection__fieldset {
+  
+}
