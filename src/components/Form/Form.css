@@ -102,7 +102,8 @@
   content: "\002B";
 }
 
-.form__submitBtn:hover  {
+.form__submitBtn:hover,
+.form__submitBtn:focus    {
   animation: none;
 
   border-color: var(--accent-color);

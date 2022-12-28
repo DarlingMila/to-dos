@@ -1,9 +1,7 @@
 .sortingSection {
-  /* position: relative; */
-
   width: 100%;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 0 20px;
 
   box-sizing: border-box;
   border: 1px solid var(--on-primary-color);
@@ -14,5 +12,96 @@
 }
 
 .sortingSection__fieldset {
-  
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  padding: 15px 0;
+
+  border: none;
+  border-bottom: 1px solid var(--on-primary-color);
+}
+
+
+.sortingSection__fieldset:last-child {
+  border-bottom: none;
+}
+
+.sortingSection__fieldset_sortingBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sortingSection__label {
+  display: inline-block;
+
+  width: 25px;
+
+  margin: 0;
+  margin-right: 10px;
+  padding: 3px 5px;
+
+  border: 1px solid var(--on-primary-color);
+  border-radius: 5px;
+
+  font-size: 15px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: middle;
+
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.sortingSection__label:last-child {
+  margin-right: 0;
+}
+
+.sortingSection__label:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  opacity: 0.8;
+}
+
+.sortingSection__fieldset input:checked + .sortingSection__label  {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+.sortingSection__fieldset input[type="radio"] {
+  display: none;
+}
+
+.sortingSection__btn {
+  height: 40px;
+
+  margin: 0;
+  padding: 10px;
+ 
+  background-color: var(--primary-color);
+  border: 1px solid var(--on-primary-color);
+  border-radius: 5px;
+ 
+  line-height: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--on-primary-color);
+ 
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  transform-origin: center;
+}
+
+.sortingSection__btn:first-child {
+  margin-right: auto;
+}
+
+.sortingSection__btn:hover  {
+  border-color: var(--accent-color);
+  background-color: var(--on-accent-color);
+  color: var(--accent-color);
 }

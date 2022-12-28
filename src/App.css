@@ -22,8 +22,10 @@
   --secondary-color: hsl(240, 3%, 90%);
   --on-secondary-color: hsl(240, 3%, 14%);
 
-  --accent-color: hsl(43, 94%, 65%);;
-  --on-accent-color: hsl(240, 3%, 14%);;
+  /* --accent-color: hsl(43, 94%, 65%); */
+  --accent-color: #f9e044;
+  /* --accent-color: #ffe11d; */
+  --on-accent-color: hsl(240, 3%, 14%);
 }
 
 .app__body {
@@ -32,7 +34,7 @@
 
 .app__wrapper {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-gap: 20px;
   width: calc(100% - 2 * var(--side-margin));
 

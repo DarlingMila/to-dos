@@ -1,9 +1,9 @@
 @keyframes colorChanging {
   from {
-    background-color: var(--dark-blue-color);
+    background-color: var(--secondary-color);
   }
   to {
-    background-color: var(--see-through-dark-blue-color);
+    background-color: var(--accent-color);
   }
 }
 
@@ -63,15 +63,18 @@
   transition: all 0.2s ease-in;
 }
 
-.goal__btn:hover, 
-.goal__btn button:hover  {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  animation: none;
-}
 
 .goal_achieved .goal__btn {
   animation: colorChanging 1s ease-in-out infinite alternate;
+  border-color: var(--primary-color);
+  color: var(--on-accent-color);
+}
+
+.goal__btn:hover {
+  animation: none;
+  background-color: var(--primary-color);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .goal_progressBar {
