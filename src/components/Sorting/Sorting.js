@@ -6,7 +6,9 @@ function Sorting({
   isDoneFlag,
   setIsDoneFlag,
   isImportantFlag,
-  setIsImportantFlag
+  setIsImportantFlag,
+  deleteAllTasks,
+  deleteAllDoneTasks,
 }) {
   return (
     <section className="sortingSection">
@@ -109,10 +111,18 @@ function Sorting({
       </fieldset>
 
       <fieldset className="sortingSection__fieldset">
-        <button type="button" className="sortingSection__btn">
+        <button
+          type="button"
+          className="sortingSection__btn"
+          onClick={deleteAllTasks}
+        >
           Удалить все
         </button>
-        <button type="button" className="sortingSection__btn">
+        <button
+          type="button"
+          className="sortingSection__btn"
+          onClick={deleteAllDoneTasks}
+        >
           Удалить сделанные
         </button>
       </fieldset>

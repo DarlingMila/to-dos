@@ -60,7 +60,12 @@ function App() {
     setToLocalStorage("earnedPoints", earnedPoints);
     setToLocalStorage("isAchieved", isAchieved);
 
+    console.log("list", list, typeof list)
+    console.log(list == undefined, list === undefined);
+    
     setSortedList(list.filter((item) => sorting(item)));
+  
+
   }, [list])
 
   useEffect(() => {
@@ -92,18 +97,12 @@ function App() {
     
   }
 
-
-
-
-
-
   const setToLocalStorage = (key, set) => {
     localStorage.setItem(key, JSON.stringify(set));
   }
 
 
   const addTask = (task) => {
-    //console.log("task", task);
     setList([...list, task]);
   };
 
@@ -129,6 +128,34 @@ function App() {
   const removeFromList = (id) => {
     setList(list.filter((item) => item.id !== id));
   }
+
+  const deleteAllTasks = () => {
+    setList(
+      list.map((item) => {
+        return { ...item, toBeDeleted: !item.toBeDeleted };
+      })
+    );
+
+    setTimeout(() => {
+      setList([]);
+    }, 900)
+  }
+
+  const deleteAllDoneTasks = () => {
+    setList(
+      list.map((item) => {
+        if (item.isDone === true) {
+          return { ...item, toBeDeleted: !item.toBeDeleted };
+        } else {
+          return item;
+        }
+      })
+    );
+
+    setTimeout(() => {
+      setList(list.filter((item) => item.isDone === false));
+    }, 900);
+  };
 
   const doneTask = (id, price, isDone) => {
     //console.log(id, price, isDone);
@@ -204,6 +231,8 @@ function App() {
             setIsDoneFlag={setIsDoneFlag}
             isImportantFlag={isImportantFlag}
             setIsImportantFlag={setIsImportantFlag}
+            deleteAllTasks={deleteAllTasks}
+            deleteAllDoneTasks={deleteAllDoneTasks}
           />
         </div>
 

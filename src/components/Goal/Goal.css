@@ -65,7 +65,7 @@
 
 
 .goal_achieved .goal__btn {
-  animation: colorChanging 1s ease-in-out infinite alternate;
+  animation: colorChanging 0.7s ease-in-out infinite alternate;
   border-color: var(--primary-color);
   color: var(--on-accent-color);
 }

@@ -6,6 +6,9 @@ function Item ({ id, name, price, isImportant, isDone, toBeDeleted, deleteTask, 
   const deleteHandler = (id) => {
     //console.log("item id", id);
     deleteTask(id);
+
+    // разбить удаление на два действия - добавка анимации и само удаление.
+    // для удаления всех - передавать сначала смену типа, потом передавать удаление. скорее все какие то действия надо будет придержать таймером
   };
 
   const doneHandler = (id, price, isDone) => {
