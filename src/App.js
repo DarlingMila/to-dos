@@ -1,6 +1,6 @@
+import "./App.css";
 import React, { useState, useEffect } from "react";
 
-import "./App.css";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
 import Sorting from "./components/Sorting/Sorting";
@@ -59,13 +59,8 @@ function App() {
     setToLocalStorage("savedList", list);
     setToLocalStorage("earnedPoints", earnedPoints);
     setToLocalStorage("isAchieved", isAchieved);
-
-    console.log("list", list, typeof list)
-    console.log(list == undefined, list === undefined);
     
     setSortedList(list.filter((item) => sorting(item)));
-  
-
   }, [list])
 
   useEffect(() => {
@@ -75,7 +70,7 @@ function App() {
   }, [goal]);
 
   useEffect(() => {
-    console.log("isDoneFlag", isDoneFlag);
+    // console.log("isDoneFlag", isDoneFlag);
     //console.log("isImportantFlag", isImportantFlag);
 
     setSortedList(list.filter((item) => sorting(item)));
@@ -94,7 +89,6 @@ function App() {
     if (option1 && option2) return true;
 
     return false;
-    
   }
 
   const setToLocalStorage = (key, set) => {
@@ -197,10 +191,6 @@ function App() {
     if (goal.fromScratch === true) {
       setEarnedPoints(0);
     } else {
-      console.log("earnedPoints", earnedPoints);
-      console.log("oldPoints", oldPoints);
-      console.log("earnedPoints-oldPoints = ", earnedPoints - oldPoints);
-
       setEarnedPoints(earnedPoints-oldPoints);
     }
 

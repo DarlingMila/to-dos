@@ -1,9 +1,20 @@
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 0.2;
+    transform: translateY(100%);
+  }
+}
+
+
 .list {
+  display: block;
+  
   margin: 0 auto;
   margin-top: 30px;
-  display: block;
-
-  /* border: 1px solid red; */
 }
 
 .list ul {
@@ -15,4 +26,14 @@
   display: grid;
   gap: 20px 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.list__placeholder {
+  animation: slideDown 0.5s forwards;
+
+  display: block;
+  color: var(--on-primary-color);
+
+  font-size: 50px;
+  text-align: center;
 }

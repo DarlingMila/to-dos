@@ -1,18 +1,20 @@
-import React from 'react'
+import React from "react";
 import "./Goal.css";
 
 function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
+  
   const open = () => {
     openPopup();
   };
 
   const setWidth = () => {
-    if (earnedPoints >= goal.price) {
-      return "100%";
-    }
+    if (earnedPoints >= goal.price) return "100%";
+
+    if (earnedPoints === 0) return "0%";
+
     const width = (earnedPoints * 100) / goal.price;
     return `${width}%`;
-  }
+  };
 
   const madeProgress = {
     width: setWidth(),
@@ -21,7 +23,13 @@ function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
   return (
     <section className={`goal ${isAchieved ? "goal_achieved" : ""}`}>
       <div className="goal__wrapper">
-        <h1 className="goal__title">{goal.name}</h1>
+        <h1
+          className={`goal__title ${
+            goal.name ? "" : "goal__title_placeholder"
+          } `}
+        >
+          {goal.name ? goal.name : "Поставьте себе цель"}
+        </h1>
         <button className="goal__btn" type="button" onClick={open}>
           Поменять цель
         </button>
@@ -36,4 +44,4 @@ function Goal({ goal, earnedPoints, openPopup, isAchieved }) {
   );
 }
 
-export default Goal
+export default Goal;

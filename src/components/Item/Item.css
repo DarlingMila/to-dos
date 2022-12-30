@@ -5,7 +5,18 @@
   }
 }
 
+@keyframes slideToPlace {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(1);
+  }
+}
+
 .item {
+  animation: slideToPlace 0.5s forwards;
+
   justify-self: end;
   align-self: flex-end;
 

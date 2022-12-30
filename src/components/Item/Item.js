@@ -1,14 +1,20 @@
-import React from 'react'
 import "./Item.css";
+import React from "react";
 
-function Item ({ id, name, price, isImportant, isDone, toBeDeleted, deleteTask, doneTask }) {
-  
+function Item({
+  id,
+  name,
+  price,
+  isImportant,
+  isDone,
+  toBeDeleted,
+  deleteTask,
+  doneTask,
+}) {
+
+
   const deleteHandler = (id) => {
-    //console.log("item id", id);
     deleteTask(id);
-
-    // разбить удаление на два действия - добавка анимации и само удаление.
-    // для удаления всех - передавать сначала смену типа, потом передавать удаление. скорее все какие то действия надо будет придержать таймером
   };
 
   const doneHandler = (id, price, isDone) => {
@@ -42,4 +48,4 @@ function Item ({ id, name, price, isImportant, isDone, toBeDeleted, deleteTask, 
   );
 }
 
-export default Item
+export default Item;

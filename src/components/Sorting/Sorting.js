@@ -1,5 +1,4 @@
 import "./Sorting.css";
-
 import React from "react";
 
 function Sorting({
@@ -10,6 +9,8 @@ function Sorting({
   deleteAllTasks,
   deleteAllDoneTasks,
 }) {
+
+  
   return (
     <section className="sortingSection">
       <fieldset className="sortingSection__fieldset sortingSection__fieldset_sortingBtns">

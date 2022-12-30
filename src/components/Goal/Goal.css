@@ -40,10 +40,15 @@
   color: inherit;
 }
 
+.goal__title_placeholder {
+  opacity: 0.5;
+}
+
 .goal_achieved .goal__title {
   color: var(--accent-color);
   text-shadow: none;
   text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .goal__btn {
